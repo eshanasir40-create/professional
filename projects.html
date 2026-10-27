@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Projects | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #ffffff;
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #111c32;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #26364f;
+        }
+
+        .logo {
+            color: #38bdf8;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 22px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 90px 8% 70px;
+            text-align: center;
+            background:
+                radial-gradient(
+                    circle at top right,
+                    #164e63 0,
+                    transparent 40%
+                );
+        }
+
+        .hero-label {
+            color: #38bdf8;
+            letter-spacing: 3px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin: 15px 0;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            max-width: 750px;
+            margin: 0 auto 30px;
+            font-size: 17px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 13px 28px;
+            background: #38bdf8;
+            color: #0f172a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            background: #818cf8;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Statistics */
+        .stats {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 25px 65px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 25px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 14px;
+        }
+
+        .stat-card h2 {
+            color: #38bdf8;
+            font-size: 32px;
+        }
+
+        .stat-card p {
+            color: #94a3b8;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 55px 8% 90px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-heading .subtitle {
+            color: #38bdf8;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .section-heading h2 {
+            font-size: 38px;
+            margin: 10px 0;
+        }
+
+        .section-heading h2 span {
+            color: #38bdf8;
+        }
+
+        .section-heading p {
+            color: #94a3b8;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* Search */
+        .search-box {
+            max-width: 600px;
+            margin: 35px auto 25px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            background: #1e293b;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #38bdf8;
+        }
+
+        .search-box input::placeholder {
+            color: #94a3b8;
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 45px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 1px solid #334155;
+            background: #1e293b;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #38bdf8;
+            color: #0f172a;
+            border-color: #38bdf8;
+        }
+
+        /* Project Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .project-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: 0.35s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: #38bdf8;
+            box-shadow: 0 15px 35px rgba(56, 189, 248, 0.12);
+        }
+
+        /* Project Visual */
+        .project-visual {
+            height: 210px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 75px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .weather-bg {
+            background: linear-gradient(135deg, #0369a1, #67e8f9);
+        }
+
+        .calculator-bg {
+            background: linear-gradient(135deg, #312e81, #818cf8);
+        }
+
+        .gallery-bg {
+            background: linear-gradient(135deg, #be185d, #f9a8d4);
+        }
+
+        .jewelry-bg {
+            background: linear-gradient(135deg, #78350f, #fbbf24);
+        }
+
+        .portfolio-bg {
+            background: linear-gradient(135deg, #164e63, #38bdf8);
+        }
+
+        .analytics-bg {
+            background: linear-gradient(135deg, #14532d, #4ade80);
+        }
+
+        .visual-label {
+            position: absolute;
+            bottom: 12px;
+            left: 15px;
+            background: rgba(15, 23, 42, 0.8);
+            color: white;
+            padding: 5px 12px;
+            font-size: 12px;
+            border-radius: 6px;
+        }
+
+        /* Project Details */
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-category {
+            color: #38bdf8;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-content h3 {
+            font-size: 22px;
+            margin: 8px 0 12px;
+        }
+
+        .project-content p {
+            color: #cbd5e1;
+            font-size: 14px;
+            min-height: 95px;
+        }
+
+        /* Technology Tags */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .tech-tags span {
+            background: #334155;
+            color: #e2e8f0;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        /* Project Buttons */
+        .project-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .project-btn {
+            flex: 1;
+            padding: 11px 8px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .demo-btn {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        .code-btn {
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+            background: transparent;
+        }
+
+        .project-btn:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+
+        /* Empty Search Message */
+        .no-results {
+            display: none;
+            text-align: center;
+            color: #94a3b8;
+            padding: 35px 10px;
+            font-size: 17px;
+        }
+
+        /* About Projects */
+        .process-section {
+            padding: 75px 8%;
+            background: #111c32;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .process-card {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 14px;
+            border: 1px solid #334155;
+        }
+
+        .process-card .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .process-card h3 {
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .process-card p {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        /* Contact */
+        .contact-section {
+            padding: 85px 8%;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .contact-section h2 span {
+            color: #38bdf8;
+        }
+
+        .contact-section p {
+            color: #94a3b8;
+            max-width: 650px;
+            margin: 0 auto 28px;
+        }
+
+        /* Footer */
+        footer {
+            background: #111c32;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid #26364f;
+            color: #94a3b8;
+        }
+
+        footer span {
+            color: #38bdf8;
+        }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .navbar {
+                padding: 18px 5%;
+            }
+
+            .navbar a {
+                margin-left: 10px;
+                font-size: 13px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .hero {
+                padding: 65px 5%;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                padding: 0 5% 40px;
+            }
+
+            .projects-section {
+                padding: 45px 5% 65px;
+            }
+
+            .section-heading h2,
+            .contact-section h2 {
+                font-size: 30px;
+            }
+
+            .projects-grid,
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-content p {
+                min-height: auto;
+            }
+
+            .process-section,
+            .contact-section {
+                padding: 60px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">My Portfolio</div>
+
+        <div>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+
+        <span class="hero-label">MY WORK & CREATIONS</span>
+
+        <h1>My Creative <span>Projects</span></h1>
+
+        <p>
+            Welcome to my project portfolio! Here I showcase my
+            learning journey, creative ideas, and practical work
+            in web development, programming, and data analytics.
+            Each project helps me learn new skills and improve
+            my technical knowledge.
+        </p>
+
+        <a href="#projects" class="hero-button">
+            Explore My Projects
+        </a>
+
+    </header>
+
+    <!-- Statistics -->
+    <section class="stats">
+
+        <div class="stat-card">
+            <h2>06</h2>
+            <p>Featured Projects</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>03+</h2>
+            <p>Core Technologies</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>100%</h2>
+            <p>Passion for Learning</p>
+        </div>
+
+    </section>
+
+    <!-- Projects -->
+    <section class="projects-section" id="projects">
+
+        <div class="section-heading">
+            <span class="subtitle">Portfolio Showcase</span>
+
+            <h2>Explore My <span>Projects</span></h2>
+
+            <p>
+                Discover my web development and analytics projects.
+                Use the search box or category filters to find
+                a particular project.
+            </p>
+        </div>
+
+        <!-- Search -->
+        <div class="search-box">
+            <input
+                type="text"
+                id="project-search"
+                placeholder="Search projects by name or technology..."
+                aria-label="Search projects"
+            >
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-buttons">
+
+            <button class="filter-btn active" data-filter="all">
+                All Projects
+            </button>
+
+            <button class="filter-btn" data-filter="web">
+                Web Development
+            </button>
+
+            <button class="filter-btn" data-filter="app">
+                Applications
+            </button>
+
+            <button class="filter-btn" data-filter="design">
+                Design
+            </button>
+
+            <button class="filter-btn" data-filter="data">
+                Data Analytics
+            </button>
+
+        </div>
+
+        <!-- Project Cards -->
+        <div class="projects-grid">
+
+            <!-- Project 1 -->
+            <article class="project-card"
+                data-category="app"
+                data-search="weather app html css javascript weather forecast">
+
+                <div class="project-visual weather-bg">
+                    🌦️
+                    <span class="visual-label">Application</span>
+                </div>
+
+                <div class="project-content">
+
+                    <span class="project-category">Web Application</span>
+
+                    <h3>Weather App</h3>
+
+                    <p>
+                        A weather application interface designed
+                        to present weather conditions, temperature,
+                        and forecast information in a clear and
+                        user-friendly layout.
+                    </p>
+
+                    <div class="tech-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+
+                    <div class="project-buttons">
+                        <a href="#contact" class="project-btn demo-btn">
+                            Live Demo
+                        </a>
+
+                        <a href="#contact" class="project-btn code-btn">
+                            View Code
+                        </a>
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="project-card"
+                data-category="app"
+                data-search="calculator html css javascript arithmetic calculator">
+
+                <div class="project-visual calculator-bg">
+                    🧮
+                    <span class="visual-label">Application</span>
+                </div>
+
+                <div class="project-content">
+
+                    <span class="project-category">Web Application</span>
+
+                    <h3>Smart Calculator</h3>
+
+                    <p>
+                        A calculator project with a clean interface
+                        for performing basic arithmetic operations.
+                        It focuses on interactive buttons and
+                        a simple user experience.
+                    </p>
+
+                    <div class="tech-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+
+                    <div class="project-buttons">
+                        <a href="#contact" class="project-btn demo-btn">
+                            Live Demo
+                        </a>
+
+                        <a href="#contact" class="project-btn code-btn">
+                            View Code
+                        </a>
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="project-card"
+                data-category="design"
+                data-search="art gallery website creative painting art images gallery">
+
+                <div class="project-visual gallery-bg">
+                    🎨
+                    <span class="visual-label">Creative Design</span>
+                </div>
+
+                <div class="project-content">
+
+                    <span class="project-category">Website Design</span>
+
+                    <h3>Creative Art Gallery</h3>
+
+                    <p>
+                        A creative gallery website concept for
+                        showcasing artwork, paintings, and visual
+                        collections through an attractive layout.
+                    </p>
+
+                    <div class="tech-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+
+                    <div class="project-buttons">
+                        <a href="#contact" class="project-btn demo-btn">
+                            Live Demo
+                        </a>
+
+                        <a href="#contact" class="project-btn code-btn">
+                            View Code
+                        </a>
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- Project 4 -->
+            <article class="project-card"
+                data-category="design"
+                data-search="jewelry website ecommerce product design fashion">
+
+                <div class="project-visual jewelry-bg">
+                    💎
+                    <span class="visual-label">Website Design</span>
+                </div>
+
+                <div class="project-content">
+
+                    <span class="project-category">Creative Website</span>
+
+                    <h3>Jewelry Store Website</h3>
+
+                    <p>
+                        An elegant jewelry website concept featuring
+                        product showcases, stylish colors, and
+                        a modern shopping-inspired layout.
+                    </p>
+
+                    <div class="tech-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+
+                    <div class="project-buttons">
+                        <a href="#contact" class="project-btn demo-btn">
+                            Live Demo
+                        </a>
+
+                        <a href="#contact" class="project-btn code-btn">
+                            View Code
+                        </a>
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- Project 5 -->
+            <article class="project-card"
+                data-category="web"
+                data-search="personal portfolio website responsive web developer">
+
+                <div class="project-visual portfolio-bg">
+                    💻
+                    <span class="visual-label">Web Development</span>
+                    </div>
+                    <div class="project-content">
+
+                    <span class="project-category">Personal Website</span>
+
+                    <h3>Personal Portfolio</h3>
+
+                    <p>
+                        A personal portfolio website designed to
+                        introduce my background, education, skills,
+                        and projects in a professional format.
+                    </p>
+
+                    <div class="tech-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+
+                    <div class="project-buttons">
+                        <a href="#contact" class="project-btn demo-btn">
+                            Live Demo
+                        </a>
+
+                        <a href="#contact" class="project-btn code-btn">
+                            View Code
+                        </a>
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- Project 6 -->
+            <article class="project-card"
+                data-category="data"
+                data-search="data analytics excel charts data cleaning analysis">
+
+                <div class="project-visual analytics-bg">
+                    📊
+                    <span class="visual-label">Data Analytics</span>
+                </div>
+
+                <div class="project-content">
+
+                    <span class="project-category">Analytics Project</span>
+
+                    <h3>Data Analytics Dashboard</h3>
+
+                    <p>
+                        A data analytics project concept focused
+                        on organizing data, identifying patterns,
+                        and presenting insights through charts
+                        and visual summaries.
+                    </p>
+
+                    <div class="tech-tags">
+                        <span>Excel</span>
+                        <span>Data Cleaning</span>
+                        <span>Charts</span>
+                    </div>
+
+                    <div class="project-buttons">
+                        <a href="#contact" class="project-btn demo-btn">
+                            Live Demo
+                        </a>
+
+                        <a href="#contact" class="project-btn code-btn">
+                            View Code
+                        </a>
+                    </div>
+
+                </div>
+            </article>
+
+        </div>
+
+        <div class="no-results" id="no-results">
+            No projects found. Try another search term.
+        </div>
+
+    </section>
+
+    <!-- My Work Process -->
+    <section class="process-section">
+
+        <div class="section-heading">
+            <span class="subtitle">How I Work</span>
+
+            <h2>My Project <span>Process</span></h2>
+
+            <p>
+                I follow a simple process to turn ideas into
+                practical projects and improve my development skills.
+            </p>
+        </div>
+
+        <div class="process-grid">
+
+            <div class="process-card">
+                <div class="icon">💡</div>
+
+                <h3>01. Planning</h3>
+
+                <p>
+                    I define the purpose of the project,
+                    identify the main features, and plan
+                    how the interface should look.
+                </p>
+            </div>
+
+            <div class="process-card">
+                <div class="icon">🎨</div>
+
+                <h3>02. Designing</h3>
+
+                <p>
+                    I choose suitable colors, layouts,
+                    typography, and components to create
+                    an attractive user interface.
+                </p>
+            </div>
+
+            <div class="process-card">
+                <div class="icon">💻</div>
+
+                <h3>03. Development</h3>
+
+                <p>
+                    I use suitable technologies to build
+                    the project and add interactive features
+                    where needed.
+                </p>
+            </div>
+
+            <div class="process-card">
+                <div class="icon">🧪</div>
+
+                <h3>04. Testing</h3>
+
+                <p>
+                    I check the layout, test interactive elements,
+                    and look for errors on different screen sizes.
+                </p>
+            </div>
+
+            <div class="process-card">
+                <div class="icon">🚀</div>
+
+                <h3>05. Improvement</h3>
+
+                <p>
+                    I review the result, make improvements,
+                    and use feedback to learn better ways
+                    of developing projects.
+                </p>
+            </div>
+
+            <div class="process-card">
+                <div class="icon">📁</div>
+
+                <h3>06. Documentation</h3>
+
+                <p>
+                    I organize project files and write
+                    descriptions so my work is easier
+                    to understand and share.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Contact -->
+    <section class="contact-section" id="contact">
+
+        <span class="subtitle">Let's Connect</span>
+
+        <h2>Have a Project <span>Idea?</span></h2>
+
+        <p>
+            I am interested in learning, collaborating,
+            and exploring new opportunities in web development.
+            Feel free to connect with me to discuss ideas
+            and potential projects.
+        </p>
+
+        <a
+            href="mailto:your-email@example.com"
+            class="hero-button"
+        >
+            Contact Me
+        </a>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            © 2026 <span>My Portfolio</span> |
+            Designed with HTML, CSS & JavaScript
+        </p>
+    </footer>
+
+    <script>
+
+        // Project category filtering
+        const filterButtons =
+            document.querySelectorAll(".filter-btn");
+
+        const projectCards =
+            document.querySelectorAll(".project-card");
+
+        const searchInput =
+            document.getElementById("project-search");
+
+        const noResults =
+            document.getElementById("no-results");
+
+        let activeFilter = "all";
+
+        function filterProjects() {
+
+            const searchText =
+                searchInput.value.toLowerCase().trim();
+
+            let visibleCount = 0;
+
+            projectCards.forEach(function (card) {
+
+                const category = card.dataset.category;
+
+                const searchData =
+                    card.dataset.search.toLowerCase();
+
+                const cardText =
+                    card.innerText.toLowerCase();
+
+                const matchesCategory =
+                    activeFilter === "all" ||
+                    category === activeFilter;
+
+                const matchesSearch =
+                    searchData.includes(searchText) ||
+                    cardText.includes(searchText);
+
+                if (matchesCategory && matchesSearch) {
+
+                    card.style.display = "block";
+                    visibleCount++;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+            noResults.style.display =
+                visibleCount === 0 ? "block" : "none";
+        }
+
+        filterButtons.forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                filterButtons.forEach(function (btn) {
+                    btn.classList.remove("active");
+                });
+
+                button.classList.add("active");
+
+                activeFilter = button.dataset.filter;
+
+                filterProjects();
+
+            });
+
+        });
+
+        searchInput.addEventListener("input", filterProjects);
+
+    </script>
+
+</body>
+</html>

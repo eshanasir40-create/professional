@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Portfolio | Home</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0f172a;
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --blue: #38bdf8;
+            --card: #1e293b;
+            --text: #cbd5e1;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 8%;
+            background: #111c31;
+            border-bottom: 1px solid #26364f;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: var(--blue);
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul a {
+            text-decoration: none;
+            color: #f1f5f9;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul a:hover,
+        nav ul a.active {
+            color: var(--blue);
+        }
+
+        /* Home Hero */
+        .home {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            padding: 80px 10%;
+            background:
+                radial-gradient(circle at 80% 40%, #12304a 0%, transparent 35%),
+                #0f172a;
+        }
+
+        .home-content {
+            max-width: 650px;
+        }
+
+        .welcome {
+            display: inline-block;
+            color: var(--blue);
+            background: #38bdf814;
+            border: 1px solid #38bdf850;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        .home-content h1 {
+            font-size: 58px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .home-content h1 span {
+            color: var(--blue);
+        }
+
+        .home-content h2 {
+            font-size: 28px;
+            color: #e2e8f0;
+            margin-bottom: 25px;
+            min-height: 35px;
+        }
+
+        .home-content h2 span {
+            color: var(--blue);
+        }
+
+        .home-content > p {
+            color: var(--text);
+            font-size: 17px;
+            line-height: 2;
+            margin-bottom: 30px;
+        }
+
+        /* Buttons */
+        .buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 27px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary-btn {
+            background: var(--blue);
+            color: #0f172a;
+            border: 1px solid var(--blue);
+        }
+
+        .primary-btn:hover {
+            background: #7dd3fc;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px #38bdf830;
+        }
+
+        .secondary-btn {
+            border: 1px solid var(--blue);
+            color: var(--blue);
+        }
+
+        .secondary-btn:hover {
+            background: var(--blue);
+            color: #0f172a;
+            transform: translateY(-4px);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #475569;
+            border-radius: 50%;
+            color: var(--blue);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--blue);
+            color: #0f172a;
+            border-color: var(--blue);
+            transform: translateY(-4px);
+        }
+
+        /* Profile Illustration */
+        .home-image {
+            min-width: 340px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-circle {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            border: 3px solid var(--blue);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            box-shadow:
+                0 0 30px #38bdf830,
+                inset 0 0 30px #38bdf810;
+            position: relative;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .profile-inner {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: #17283e;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .profile-icon {
+            font-size: 95px;
+            margin-bottom: 15px;
+        }
+
+        .profile-inner h3 {
+            color: var(--blue);
+            font-size: 23px;
+        }
+
+        .profile-inner p {
+            color: var(--text);
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: #1e293b;
+            border: 1px solid #38bdf870;
+            color: var(--blue);
+            padding: 13px 18px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 8px 20px #00000030;
+        }
+
+        .card-one {
+            top: 30px;
+            right: -35px;
+        }
+
+        .card-two {
+            bottom: 30px;
+            left: -35px;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        /* Introduction Section */
+        .intro-section {
+            padding: 100px 10%;
+            background: #111c31;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-heading .label {
+            color: var(--blue);
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .section-heading h2 {
+            font-size: 38px;
+            margin-bottom: 18px;
+        }
+
+        .section-heading h2 span {
+            color: var(--blue);
+        }
+
+        .section-heading p {
+            color: var(--text);
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.8;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .intro-card {
+            background: var(--card);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 32px 25px;
+            transition: 0.3s;
+        }
+
+        .intro-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--blue);
+            box-shadow: 0 12px 30px #00000025;
+        }
+
+        .intro-card .card-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 12px;
+            background: #0f344a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 22px;
+        }
+
+        .intro-card h3 {
+            font-size: 21px;
+            margin-bottom: 15px;
+        }
+
+        .intro-card p {
+            color: var(--text);
+            line-height: 1.9;
+            font-size: 15px;
+        }
+
+        /* Interests Section */
+        .interests-section {
+            padding: 100px 10%;
+            background: #0f172a;
+        }
+
+        .interests-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .interests-text h2 {
+            font-size: 38px;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .interests-text h2 span {
+            color: var(--blue);
+        }
+
+        .interests-text p {
+            color: var(--text);
+            line-height: 2;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .interests-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .interest-item {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            background: var(--card);
+            padding: 22px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            transition: 0.3s;
+        }
+
+        .interest-item:hover {
+            border-color: var(--blue);
+            transform: translateX(5px);
+        }
+
+        .interest-icon {
+            font-size: 30px;
+            width: 55px;
+            height: 55px;
+            flex-shrink: 0;
+            background: #0f344a;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .interest-item h3 {
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        .interest-item p {
+            color: var(--text);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* Motivation Section */
+        .motivation-section {
+            padding: 90px 10%;
+            background: linear-gradient(135deg, #172c45, #111c31);
+            text-align: center;
+        }
+
+        .motivation-section h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .motivation-section h2 span {
+            color: var(--blue);
+        }
+
+        .motivation-section p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--text);
+            font-size: 17px;
+            line-height: 2;
+        }
+
+        .motivation-section .btn {
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 28px 15px;
+            color: #94a3b8;
+            background: #080f1e;
+            border-top: 1px solid #26364f;
+        }
+
+        footer span {
+            color: var(--blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 1050px) {
+            .home {
+                padding: 70px 7%;
+                gap: 35px;
+            }
+
+            .home-content h1 {
+                font-size: 46px;
+            }
+
+            .profile-circle {
+                width: 290px;
+                height: 290px;
+            }
+
+            .profile-inner {
+                width: 245px;
+                height: 245px;
+            }
+
+            .profile-icon {
+                font-size: 75px;
+            }
+
+            .home-image {
+                min-width: 290px;
+            }
+
+            .intro-section,
+            .interests-section {
+                padding: 80px 7%;
+            }
+        }
+
+        @media (max-width: 800px) {
+            nav {
+                flex-direction: column;
+                gap: 18px;
+                padding: 20px 5%;
+            }
+
+            nav ul {
+                justify-content: center;
+                gap: 17px;
+                flex-wrap: wrap;
+            }
+
+            .home {
+                min-height: auto;
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 65px 7%;
+                gap: 55px;
+            }
+
+            .home-content {
+                max-width: 100%;
+            }
+
+            .home-content h1 {
+                font-size: 43px;
+            }
+
+            .home-content h2 {
+                font-size: 23px;
+            }
+
+            .buttons,
+            .social-links {
+                justify-content: center;
+            }
+
+            .home-image {
+                min-width: auto;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .interests-container {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .section-heading h2,
+            .interests-text h2,
+            .motivation-section h2 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .logo {
+                font-size: 24px;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            nav ul a {
+                font-size: 13px;
+            }
+
+            .home {
+                padding: 50px 6%;
+            }
+
+            .home-content h1 {
+                font-size: 35px;
+            }
+
+            .home-content h2 {
+                font-size: 20px;
+            }
+
+            .home-content > p {
+                font-size: 15px;
+                line-height: 1.9;
+            }
+
+            .profile-circle {
+                width: 235px;
+                height: 235px;
+            }
+
+            .profile-inner {
+                width: 200px;
+                height: 200px;
+            }
+
+            .profile-icon {
+                font-size: 60px;
+                margin-bottom: 8px;
+            }
+
+            .profile-inner h3 {
+                font-size: 17px;
+            }
+
+            .profile-inner p {
+                font-size: 12px;
+            }
+
+            .floating-card {
+                padding: 9px 12px;
+                font-size: 12px;
+            }
+
+            .card-one {
+                right: -12px;
+            }
+
+            .card-two {
+                left: -12px;
+            }
+
+            .btn {
+                padding: 12px 17px;
+                font-size: 13px;
+            }
+
+            .intro-section,
+            .interests-section,
+            .motivation-section {
+                padding: 65px 6%;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading h2,
+            .interests-text h2,
+            .motivation-section h2 {
+                font-size: 28px;
+            }
+
+            .intro-card {
+                padding: 25px 22px;
+            }
+
+            .interest-item {
+                padding: 17px;
+            }
+
+            .motivation-section p {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">My<span>Portfolio.</span></div>
+
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="file:///C:/Users/Shine%20Tech/Videos/web%20site/portfolio2/About.html">About</a></li>
+            <li><a href="file:///C:/Users/Shine%20Tech/Videos/web%20site/portfolio2/Egucation.html">Education</a></li>
+            <li><a href="file:///C:/Users/Shine%20Tech/Videos/web%20site/portfolio2/Skill.html">Skills</a></li>
+            <li><a href="file:///C:/Users/Shine%20Tech/Videos/web%20site/portfolio2/projects.html">Projects</a></li>
+            <li><a href="file:///C:/Users/Shine%20Tech/Videos/web%20site/portfolio2/Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Home Section -->
+    <section class="home">
+
+        <div class="home-content">
+
+            <div class="welcome">
+                ✨ WELCOME TO MY PORTFOLIO
+            </div>
+
+            <h1>Hello, I'm <span>Esha Nasir </span></h1>
+
+            <h2>
+                A Computer Science Student &
+                <span id="typing"></span>
+            </h2>
+
+            <p>
+                Welcome to my personal portfolio! I am a Computer Science
+                student passionate about web development, technology, and
+                creative problem-solving. I enjoy creating modern, attractive,
+                and user-friendly websites using HTML, CSS, and JavaScript.
+                I love turning creative ideas into real projects and exploring
+                new technologies that help me improve my development skills.
+                My goal is to grow as a developer, gain practical experience,
+                and create useful digital experiences.
+            </p>
+
+            <div class="buttons">
+                <a href="projects.html" class="btn primary-btn">
+                    View My Projects ↗
+                </a>
+
+                <a href="contact.html" class="btn secondary-btn">
+                    Contact Me
+                </a>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/"
+                   target="_blank" rel="noopener noreferrer"
+                   aria-label="LinkedIn">in</a>
+
+                <a href="https://github.com/"
+                   target="_blank" rel="noopener noreferrer"
+                   aria-label="GitHub">GH</a>
+
+                <a href="https://www.instagram.com/"
+                   target="_blank" rel="noopener noreferrer"
+                   aria-label="Instagram">IG</a>
+            </div>
+
+        </div>
+
+        <div class="home-image">
+            <div class="profile-circle">
+
+                <div class="profile-inner">
+                    <div class="profile-icon">👩‍💻</div>
+                    <h3>Creative Developer</h3>
+                    <p>Learning • Building • Growing</p>
+                </div>
+
+                <div class="floating-card card-one">
+                    HTML & CSS
+                </div>
+
+                <div class="floating-card card-two">
+                    JavaScript ✨
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro-section">
+
+        <div class="section-heading">
+            <div class="label">A LITTLE ABOUT MYSELF</div>
+            <h2>Who <span>I Am</span></h2>
+
+            <p>
+                I am a motivated Computer Science student who enjoys learning
+                new things, building creative websites, and improving my
+                technical skills through practical experience.
+            </p>
+        </div>
+
+        <div class="intro-grid">
+
+            <div class="intro-card">
+                <div class="card-icon">🎓</div>
+                <h3>My Education</h3>
+                <p>
+                    I am pursuing my studies in Computer Science and developing
+                    my understanding of programming, web technologies, and
+                    software development.
+                </p>
+            </div>
+
+            <div class="intro-card">
+                <div class="card-icon">💻</div>
+                <h3>My Passion</h3>
+                <p>
+                    I enjoy designing websites, writing code, solving
+                    programming problems, and transforming ideas into
+                    attractive digital experiences.
+                </p>
+            </div>
+
+            <div class="intro-card">
+                <div class="card-icon">🚀</div>
+                <h3>My Goal</h3>
+                <p>
+                    My goal is to become a skilled developer, gain professional
+                    experience, work on meaningful projects, and continue
+                    learning modern technologies.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Interests Section -->
+    <section class="interests-section">
+
+        <div class="interests-container">
+
+            <div class="interests-text">
+                <div class="section-heading" style="text-align: left; margin-bottom: 25px;">
+                    <div class="label">WHAT I ENJOY</div>
+                </div>
+
+                <h2>My Interests & <span>Creative Journey</span></h2>
+
+                <p>
+                    Technology gives me the opportunity to explore ideas and
+                    build something useful. I enjoy working on small projects
+                    that help me understand how websites work and how design
+                    and functionality come together.
+                </p>
+
+                <p>
+                    I believe that consistent practice, curiosity, and
+                    willingness to learn are important parts of becoming a
+                    better developer. Every project gives me a chance to
+                    discover something new and improve my skills.
+                </p>
+
+                <a href="about.html" class="btn primary-btn">
+                    Learn More About Me ↗
+                </a>
+            </div>
+
+            <div class="interests-list">
+
+                <div class="interest-item">
+                    <div class="interest-icon">🌐</div>
+                    <div>
+                        <h3>Web Development</h3>
+                        <p>
+                            Creating responsive and user-friendly websites
+                            with modern web technologies.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="interest-item">
+                    <div class="interest-icon">🎨</div>
+                    <div>
+                        <h3>Creative Design</h3>
+                        <p>
+                            Exploring layouts, colors, typography, and
+                            attractive user interfaces.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="interest-item">
+                    <div class="interest-icon">📚</div>
+                    <div>
+                        <h3>Continuous Learning</h3>
+                        <p>
+                            Learning new concepts and improving my
+                            programming knowledge through practice.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="interest-item">
+                    <div class="interest-icon">⚙️</div>
+                    <div>
+                        <h3>Problem Solving</h3>
+                        <p>
+                            Finding practical solutions and improving my
+                            logical thinking through coding.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Motivation Section -->
+    <section class="motivation-section">
+
+        <h2>Always Ready to <span>Learn & Grow</span></h2>
+
+        <p>
+            I am excited to continue my journey in Computer Science, explore
+            new opportunities, and gain practical experience. I look forward
+            to connecting with people, collaborating on creative ideas, and
+            building projects that reflect my passion for technology.
+        </p>
+
+        <a href="contact.html" class="btn primary-btn">
+            Let's Connect ↗
+        </a>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            © <span id="year"></span> MyPortfolio.
+            Built with ❤️ using HTML, CSS & JavaScript.
+        </p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        const words = [
+            "Front-End Developer",
+            "Web Designer",
+            "Creative Learner",
+            "Future Software Developer"
+        ];
+
+        const typingElement = document.getElementById("typing");
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+
+            if (deleting) {
+                charIndex--;
+            } else {
+                charIndex++;
+            }
+
+            typingElement.textContent =
+                currentWord.substring(0, charIndex);
+
+            let speed = deleting ? 45 : 90;
+
+            if (!deleting && charIndex === currentWord.length) {
+                deleting = true;
+                speed = 1300;
+            } else if (deleting && charIndex === 0) {
+                deleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                speed = 400;
+            }
+
+            setTimeout(typeEffect, speed);
+        }
+
+        typeEffect();
+    </script>
+
+</body>
+</html>

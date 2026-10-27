@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Education | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #ffffff;
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        .navbar {
+            width: 100%;
+            padding: 20px 8%;
+            background: #111c32;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #26364f;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .navbar a:hover {
+            color: #38bdf8;
+        }
+
+        /* Main Education Section */
+        .education-section {
+            min-height: 100vh;
+            padding: 80px 8%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section-heading .subtitle {
+            color: #38bdf8;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .section-heading h1 {
+            font-size: 48px;
+            margin: 10px 0;
+        }
+
+        .section-heading h1 span {
+            color: #38bdf8;
+        }
+
+        .section-heading p {
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 16px;
+        }
+
+        /* Introduction */
+        .education-intro {
+            max-width: 900px;
+            margin: 45px auto 65px;
+            padding: 30px;
+            background: #17243b;
+            border-left: 5px solid #38bdf8;
+            border-radius: 12px;
+        }
+
+        .education-intro h2 {
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+
+        .education-intro p {
+            color: #cbd5e1;
+            font-size: 16px;
+        }
+
+        /* Education Timeline */
+        .timeline-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 45px;
+        }
+
+        .timeline-title span {
+            color: #38bdf8;
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(#38bdf8, #818cf8);
+        }
+
+        .education-card {
+            position: relative;
+            margin-bottom: 35px;
+            margin-left: 65px;
+            padding: 35px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 15px;
+            transition: 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+            box-shadow: 0 12px 30px rgba(56, 189, 248, 0.12);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -52px;
+            top: 35px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #38bdf8;
+            border: 5px solid #0f172a;
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+        }
+
+        .education-icon {
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #263b59;
+            border-radius: 12px;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .year {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.12);
+            color: #38bdf8;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .education-card h3 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .education-card h4 {
+            color: #a5b4fc;
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+
+        .education-card p {
+            color: #cbd5e1;
+            margin-bottom: 18px;
+        }
+
+        .education-card ul {
+            padding-left: 22px;
+            color: #cbd5e1;
+        }
+
+        .education-card li {
+            margin-bottom: 9px;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 7px 15px;
+            background: #164e63;
+            color: #67e8f9;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        /* How I Learn Section */
+        .learning-section {
+            margin-top: 90px;
+        }
+
+        .learning-section h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .learning-section h2 span {
+            color: #38bdf8;
+        }
+
+        .learning-description {
+            text-align: center;
+            color: #94a3b8;
+            max-width: 750px;
+            margin: 0 auto 40px;
+        }
+
+        .learning-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .learning-card {
+            padding: 30px 25px;
+            background: #1e293b;
+            border-radius: 15px;
+            border: 1px solid #334155;
+            transition: 0.3s;
+        }
+
+        .learning-card:hover {
+            border-color: #38bdf8;
+            background: #202f47;
+            transform: translateY(-5px);
+        }
+
+        .learning-card .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .learning-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .learning-card p {
+            color: #cbd5e1;
+            font-size: 15px;
+        }
+
+        /* Future Goals */
+        .goals-section {
+            margin-top: 85px;
+            padding: 45px;
+            border-radius: 18px;
+            text-align: center;
+            background: linear-gradient(
+                135deg,
+                #172554,
+                #1e293b,
+                #164e63
+            );
+            border: 1px solid #334155;
+        }
+
+        .goals-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .goals-section h2 span {
+            color: #38bdf8;
+        }
+
+        .goals-section p {
+            max-width: 750px;
+            margin: 0 auto 25px;
+            color: #dbeafe;
+        }
+
+        .goal-button {
+            padding: 13px 28px;
+            background: #38bdf8;
+            color: #0f172a;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .goal-button:hover {
+            background: #818cf8;
+            color: white;
+        }
+
+        #goal-message {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(15, 23, 42, 0.65);
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #111c32;
+            border-top: 1px solid #26364f;
+            color: #94a3b8;
+        }
+
+        footer span {
+            color: #38bdf8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .learning-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-heading h1 {
+                font-size: 38px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 18px 5%;
+            }
+
+            .education-section {
+                padding: 55px 5%;
+            }
+
+            .section-heading h1 {
+                font-size: 32px;
+            }
+
+            .section-heading p {
+                font-size: 14px;
+            }
+
+            .education-intro {
+                padding: 22px;
+                margin: 35px auto 50px;
+            }
+
+            .timeline::before {
+                left: 12px;
+            }
+
+            .education-card {
+                margin-left: 38px;
+                padding: 22px;
+            }
+
+            .timeline-dot {
+                left: -37px;
+                width: 23px;
+                height: 23px;
+            }
+
+            .education-card h3 {
+                font-size: 22px;
+            }
+
+            .learning-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .goals-section {
+                padding: 30px 20px;
+            }
+
+            .goals-section h2 {
+                font-size: 26px;
+            }
+
+            .timeline-title {
+                font-size: 27px;
+            }
+
+            .learning-section h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">My Portfolio</div>
+        <a href="#education">Education</a>
+    </nav>
+
+    <main>
+
+        <section class="education-section" id="education">
+
+            <!-- Page Heading -->
+            <div class="section-heading">
+                <span class="subtitle">My Academic Journey</span>
+
+                <h1>My <span>Education</span></h1>
+
+                <p>
+                    Education is the foundation of my knowledge,
+                    personal growth, and future career.
+                    Here is an overview of my academic journey
+                    and the skills I am developing.
+                </p>
+            </div>
+
+            <!-- Introduction -->
+            <div class="education-intro">
+
+                <h2>🎓 Learning Today, Leading Tomorrow</h2>
+
+                <p>
+                    I am a Computer Science student who enjoys learning
+                    about technology, programming, and web development.
+                    My education helps me develop logical thinking,
+                    problem-solving abilities, and technical knowledge.
+                    Along with my academic studies, I work on practical
+                    projects to improve my development skills and prepare
+                    for future professional opportunities.
+                </p>
+
+            </div>
+
+            <!-- Bachelor's Degree Only -->
+            <h2 class="timeline-title">
+                My Academic <span>Background</span>
+            </h2>
+
+            <div class="timeline">
+
+                <article class="education-card">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="education-icon">🎓</div>
+
+                    <span class="year">2023 – 2027</span>
+
+                    <h3>Bachelor's Degree in Computer Science</h3>
+
+                    <h4>University Name — Pakistan</h4>
+
+                    <p>
+                        I am pursuing my Bachelor's degree in Computer
+                        Science. Through my studies, I am developing
+                        knowledge of programming, software development,
+                        computer systems, databases, and modern technology.
+                    </p>
+
+                    <p>
+                        My academic journey helps me understand how
+                        technology works and how software applications
+                        and websites are developed. I enjoy applying
+                        what I learn in class to practical projects
+                        and improving my technical skills.
+                    </p>
+
+                    <ul>
+                        <li>Learning programming and problem-solving.</li>
+                        <li>Studying software development concepts.</li>
+                        <li>Developing websites using HTML, CSS, and JavaScript.</li>
+                        <li>Understanding computer science fundamentals.</li>
+                        <li>Building practical projects to gain experience.</li>
+                    </ul>
+
+                    <span class="status">Currently Studying</span>
+
+                </article>
+
+            </div>
+
+            <!-- How I Learn -->
+            <section class="learning-section">
+
+                <h2>How I <span>Learn</span></h2>
+
+                <p class="learning-description">
+                    I believe that learning becomes more effective
+                    through practice, curiosity, and continuous improvement.
+                    I focus on understanding concepts and applying them
+                    to real projects.
+                </p>
+
+                <div class="learning-grid">
+
+                    <div class="learning-card">
+                        <div class="icon">💻</div>
+
+                        <h3>Practical Learning</h3>
+
+                        <p>
+                            I practice coding by creating websites
+                            and small applications. This helps me
+                            understand concepts through real examples.
+                        </p>
+                    </div>
+
+                    <div class="learning-card">
+                        <div class="icon">📚</div>
+
+                        <h3>Online Resources</h3>
+
+                        <p>
+                            I use online tutorials, documentation,
+                            and educational resources to learn new
+                            concepts and improve my knowledge.
+                        </p>
+                    </div>
+
+                    <div class="learning-card">
+                        <div class="icon">🧠</div>
+
+                        <h3>Problem Solving</h3>
+
+                        <p>
+                            I improve my logical thinking by solving
+                            programming problems and finding solutions
+                            to coding challenges.
+                        </p>
+                    </div>
+
+                    <div class="learning-card">
+                        <div class="icon">🌐</div>
+
+                        <h3>Web Development</h3>
+
+                        <p>
+                            I learn HTML, CSS, and JavaScript to build
+                            responsive, attractive, and user-friendly
+                            websites.
+                        </p>
+                    </div>
+
+                    <div class="learning-card">
+                        <div class="icon">🚀</div>
+
+                        <h3>Project-Based Learning</h3>
+
+                        <p>
+                            I apply my knowledge by building projects
+                            such as portfolio websites, weather apps,
+                            and other web applications.
+                        </p>
+                    </div>
+
+                    <div class="learning-card">
+                        <div class="icon">📈</div>
+
+                        <h3>Continuous Improvement</h3>
+
+                        <p>
+                            I review my work, learn from mistakes,
+                            explore new technologies, and keep improving
+                            my technical and creative abilities.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Future Goals -->
+            <section class="goals-section">
+
+                <h2>My Future <span>Academic Goals</span></h2>
+
+                <p>
+                    My goal is to complete my Computer Science degree,
+                    strengthen my technical skills, gain practical
+                    experience through internships, and become a
+                    professional in the technology field.
+                    I believe continuous learning and consistent
+                    practice will help me achieve my ambitions.
+                </p>
+
+                <button class="goal-button" onclick="showGoals()">
+                    Explore My Goals
+                </button>
+
+                <div id="goal-message">
+
+                    <h3>My Development Roadmap</h3>
+
+                    <p>
+                        1. Strengthen my HTML, CSS, and JavaScript skills.<br>
+                        2. Build more real-world web development projects.<br>
+                        3. Improve programming and problem-solving skills.<br>
+                        4. Gain internship and professional experience.<br>
+                        5. Continue learning modern technologies.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            © 2026 <span>My Portfolio</span> |
+            Education & Learning Journey
+        </p>
+    </footer>
+
+    <script>
+        function showGoals() {
+
+            const message = document.getElementById("goal-message");
+            const button = document.querySelector(".goal-button");
+
+            if (message.style.display === "block") {
+
+                message.style.display = "none";
+                button.textContent = "Explore My Goals";
+
+            } else {
+
+                message.style.display = "block";
+                button.textContent = "Hide My Goals";
+
+            }
+        }
+    </script>
+
+</body>
+</html>
